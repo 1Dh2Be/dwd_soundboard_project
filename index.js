@@ -138,6 +138,7 @@ const loadSong = (e) => {
 		image: itmResult.dataset.image,
 		preview: itmResult.dataset.preview,
 	};
+	saveCurrentSound();
 
 	audio.src = itmResult.dataset.preview;
 	syncFavBtn();
@@ -229,7 +230,9 @@ const syncClearFavBtn = () => {
 const clearAllFav = () => {
 	//simply set the list to an empty list
 	favourites = [];
+	saveFavourites();
 	syncClearFavBtn();
+	syncFavBtn();
 	renderFavourites();
 };
 
@@ -255,6 +258,7 @@ const toggleFavourite = () => {
 		favourites.push({ ...currentSound });
 	}
 
+	saveFavourites();
 	renderFavourites();
 	syncFavBtn();
 };
@@ -293,6 +297,7 @@ const loadFavourite = (e) => {
 		image: itmFavourite.dataset.image,
 		preview: itmFavourite.dataset.preview,
 	};
+	saveCurrentSound();
 
 	audio.src = itmFavourite.dataset.preview;
 	syncFavBtn();
@@ -307,3 +312,42 @@ btnClear.addEventListener("click", clearAllFav);
 
 audio.addEventListener("play", syncPlayBtn);
 audio.addEventListener("pause", syncPlayBtn);
+
+// PART-7
+// localStorage persistence
+const STORAGE_FAVOURITES = "soundboard.favourites";
+const STORAGE_CURRENT_SOUND = "soundboard.currentSound";
+
+const saveFavourites = () => {
+	localStorage.setItem(STORAGE_FAVOURITES, JSON.stringify(favourites));
+};
+
+const saveCurrentSound = () => {
+	localStorage.setItem(STORAGE_CURRENT_SOUND, JSON.stringify(currentSound));
+};
+
+// PART-8
+// restore from localStorage on page load
+const storedFavourites = localStorage.getItem(STORAGE_FAVOURITES);
+if (storedFavourites) {
+	favourites = JSON.parse(storedFavourites);
+	renderFavourites();
+}
+
+const storedCurrentSound = localStorage.getItem(STORAGE_CURRENT_SOUND);
+if (storedCurrentSound) {
+	currentSound = JSON.parse(storedCurrentSound);
+	if (currentSound) {
+		txtNowPlaying.textContent = currentSound.name;
+		spnAuthor.textContent = currentSound.username;
+
+		divWaveform.innerHTML = "";
+		const imgWaveform = document.createElement("img");
+		imgWaveform.className = "imgWaveform";
+		imgWaveform.src = currentSound.image;
+		divWaveform.appendChild(imgWaveform);
+
+		audio.src = currentSound.preview;
+		syncFavBtn();
+	}
+}
