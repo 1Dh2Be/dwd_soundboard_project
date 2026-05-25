@@ -1,3 +1,5 @@
+// CHAPTER-1
+
 // PART-1
 // define variables
 
@@ -14,6 +16,8 @@ const lstResults = document.querySelector("#lstResults");
 // dom variables - right panel
 const txtNowPlaying = document.querySelector(".h2NowPlayingTitle");
 const spnAuthor = document.querySelector(".spnNowPlayingAuthor");
+const divWaveform = document.querySelector(".divWaveform");
+
 // PART-2
 // render functions
 
@@ -32,6 +36,7 @@ const renderResults = (sounds) => {
 		itmResult.className = "itmResult";
 		itmResult.dataset.name = sound.name;
 		itmResult.dataset.username = sound.username;
+		itmResult.dataset.image = sound.images["waveform_bw_l"];
 
 		const divResultInfo = document.createElement("div");
 		divResultInfo.className = "divResultInfo";
@@ -104,8 +109,18 @@ const loadSong = (e) => {
 	const itmResult = e.target.closest(".itmResult");
 	if (!itmResult) return;
 
+	const itmPrev = lstResults.querySelector(".itmResultSelected");
+	if (itmPrev) itmPrev.classList.remove("itmResultSelected");
+	itmResult.classList.add("itmResultSelected");
+
 	txtNowPlaying.textContent = itmResult.dataset.name;
 	spnAuthor.textContent = itmResult.dataset.username;
+
+	divWaveform.innerHTML = "";
+	const imgWaveform = document.createElement("img");
+	imgWaveform.className = "imgWaveform";
+	imgWaveform.src = itmResult.dataset.image;
+	divWaveform.appendChild(imgWaveform);
 };
 
 lstResults.addEventListener("click", loadSong);
