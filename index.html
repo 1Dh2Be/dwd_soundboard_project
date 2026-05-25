@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Soundboard</title>
-    <link rel="stylesheet" href="index.css" />
-    <script src="index.js" defer></script>
-  </head>
-  <body></body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Soundboard</title>
+		<link rel="stylesheet" href="index.css">
+		<script src="index.js" defer></script>
+	</head>
+	<body>
+		<main class="maiApp">
+			<!-- LEFT PANEL: search + results -->
+			<aside class="asdPanelLeft">
+				<header class="hdrPanel">
+					<h1 class="h1Brand">soundboard</h1>
+				</header>
+
+				<form class="frmSearch" role="search">
+					<svg class="svgSearchIcon" viewBox="0 0 24 24">
+						<circle
+							cx="11"
+							cy="11"
+							r="7"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+						></circle>
+						<line
+							x1="16.5"
+							y1="16.5"
+							x2="21"
+							y2="21"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+						></line>
+					</svg>
+					<input
+						class="inpSearch"
+						type="search"
+						name="query"
+						placeholder="Search sounds…"
+						autocomplete="off"
+					>
+
+					<button class="btnHidden" type="submit">Search</button>
+				</form>
+
+				<section class="secResults" aria-label="Search results">
+					<h2 class="h2SectionTitle">Results</h2>
+					<p class="pEmptyState" id="pResultsEmpty">
+						Search a sound to display them below
+					</p>
+					<ul class="lstResults" id="lstResults">
+						<!-- populated by JS -->
+					</ul>
+				</section>
+			</aside>
+
+			<!-- RIGHT PANEL: now playing + favourites -->
+			<section class="secPanelRight">
+				<article class="artNowPlaying" id="artNowPlaying">
+					<div class="divNowPlayingInfo">
+						<span class="spnBadge">
+							<svg viewBox="0 0 24 24">
+								<path
+									d="M12 2 L14 9 L21 12 L14 15 L12 22 L10 15 L3 12 L10 9 Z"
+									fill="currentColor"
+								></path>
+							</svg>
+							Now playing
+						</span>
+						<h2 class="h2NowPlayingTitle">No sound selected</h2>
+						<p class="pNowPlayingMeta">
+							Posted by <span class="spnNowPlayingAuthor">—</span>
+						</p>
+
+						<div class="divNowPlayingActions">
+							<button type="button" class="btnPlay">
+								<svg viewBox="0 0 24 24">
+									<path d="M8 5 L19 12 L8 19 Z" fill="currentColor"></path>
+								</svg>
+								Play
+							</button>
+							<button type="button" class="btnFavourite">
+								<svg viewBox="0 0 24 24">
+									<path
+										d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6C19 16.5 12 21 12 21Z"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linejoin="round"
+									></path>
+								</svg>
+								Favourite
+							</button>
+						</div>
+					</div>
+
+					<div class="divWaveform"></div>
+				</article>
+
+				<section class="secFavourites" aria-label="Favourites">
+					<header class="hdrFavourites">
+						<h2 class="h2SectionTitle">Favourites</h2>
+						<span class="spnFavouritesCount" id="spnFavouritesCount">0</span>
+					</header>
+					<p class="pEmptyState" id="pFavouritesEmpty">
+						Add a song to your favourites to see them here!
+					</p>
+					<ul class="lstFavourites" id="lstFavourites">
+						<!-- populated by JS from localStorage -->
+					</ul>
+				</section>
+			</section>
+		</main>
+	</body>
 </html>

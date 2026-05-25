@@ -58,12 +58,45 @@ This file gives Claude Code the context it needs when working in this repository
 - No build tools / bundlers beyond what Biome needs.
 - No TypeScript (plain JS only).
 - No inline `<script>` or inline styles in HTML — keep concerns separated across `index.html`, `index.css`, `index.js`.
+- **No `aria-*` attributes** (e.g. `aria-hidden`, `aria-label`). The teacher has not covered ARIA / accessibility attributes in class, so they should not appear in submitted code. Stick to plain semantic HTML.
 
 ### Conventions
 
 - Use `fetch` with `async/await`, never `.then()` chains or `XMLHttpRequest`.
 - Run `npm run check` before committing to apply Biome's formatter + linter.
 - Keep file names lowercase (`index.html`, `index.css`, `index.js`).
+
+#### Naming — Hungarian notation
+
+All CSS class names, HTML `id` attributes, and JavaScript variables that reference DOM elements **must use Hungarian notation**: a short lowercase prefix indicating the element type, followed by a PascalCase descriptive name. No kebab-case, no BEM (`block__element--modifier`).
+
+| Prefix | Element |
+| --- | --- |
+| `mai` | `<main>` |
+| `hdr` | `<header>` |
+| `nav` | `<nav>` |
+| `asd` | `<aside>` |
+| `sec` | `<section>` |
+| `art` | `<article>` |
+| `div` | `<div>` |
+| `frm` | `<form>` |
+| `inp` | `<input>` |
+| `btn` | `<button>` |
+| `lbl` | `<label>` |
+| `spn` | `<span>` |
+| `p`   | `<p>` |
+| `lst` | `<ul>` / `<ol>` |
+| `itm` | `<li>` |
+| `h1` / `h2` / `h3` | headings |
+| `svg` | `<svg>` |
+| `img` | `<img>` |
+
+Examples:
+
+- `<input class="inpSearch">` — not `.search` or `.search__input`
+- `<button class="btnPlay">` — not `.btn--primary`
+- `<ul class="lstFavourites" id="lstFavourites">` — not `#favourites-list`
+- In JS: `const inpSearch = document.querySelector(".inpSearch");`
 
 ## Useful commands
 

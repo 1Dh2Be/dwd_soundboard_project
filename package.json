@@ -1,26 +1,26 @@
 {
-  "name": "dwd_soundboard_project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lint": "biome lint .",
-    "format": "biome format --write .",
-    "check": "biome check --write ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/1Dh2Be/dwd_soundboard_project.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/1Dh2Be/dwd_soundboard_project/issues"
-  },
-  "homepage": "https://github.com/1Dh2Be/dwd_soundboard_project#readme",
-  "devDependencies": {
-    "@biomejs/biome": "2.4.15"
-  }
+	"name": "dwd_soundboard_project",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"lint": "biome lint .",
+		"format": "biome format --write .",
+		"check": "biome check --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/1Dh2Be/dwd_soundboard_project.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/1Dh2Be/dwd_soundboard_project/issues"
+	},
+	"homepage": "https://github.com/1Dh2Be/dwd_soundboard_project#readme",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.15"
+	}
 }
