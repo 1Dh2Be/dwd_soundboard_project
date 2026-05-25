@@ -497,6 +497,11 @@ body::before {
 	border-color: var(--glass-border-strong);
 }
 
+.btnFavouriteActive svg path {
+	fill: #fff;
+	stroke: #fff;
+}
+
 /* =========================================================
    Waveform (replaces artist image)
    ========================================================= */
@@ -537,16 +542,44 @@ body::before {
 	justify-content: space-between;
 }
 
+.hdrFavourites > div {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.btnClear {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--glass-border);
+	padding: 10px 18px;
+	border-radius: 20px;
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: color 0.15s;
+}
+
+.btnClear:hover {
+	color: var(--text);
+}
+
+.hidden {
+	display: none;
+}
+
 .spnFavouritesCount {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-width: 22px;
-	height: 22px;
-	padding: 0 8px;
+	min-width: 37px;
+	height: 37px;
+	padding: 10px;
 	background: rgba(255, 255, 255, 0.08);
 	border: 1px solid var(--glass-border);
-	border-radius: 999px;
+	border-radius: 9999px;
 	font-size: 12px;
 	color: var(--text-muted);
 }
@@ -555,11 +588,60 @@ body::before {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	padding-right: 10px;
+	display: flex;
+	flex-direction: column;
 	gap: 12px;
-	overflow-y: auto;
+	overflow-y: scroll;
 	flex: 1;
+}
+
+.itmFavourite {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 4px;
+	padding: 12px 14px;
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid var(--glass-border);
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+	transition:
+		background 0.15s,
+		border-color 0.15s;
+	min-width: 0;
+}
+
+.itmFavourite:hover {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: var(--glass-border-strong);
+}
+
+.itmFavouriteSelected,
+.itmFavouriteSelected:hover {
+	background: rgba(124, 242, 156, 0.1);
+	border-color: rgba(124, 242, 156, 0.35);
+}
+
+.divFavouriteInfo {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	min-width: 0;
+}
+
+.spnFavouriteName {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--text);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.spnFavouriteMeta {
+	font-size: 11px;
+	color: var(--text-faint);
 }
 
 /* =========================================================
