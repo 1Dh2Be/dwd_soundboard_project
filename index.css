@@ -3,7 +3,7 @@
    ========================================================= */
 
 :root {
-	--bg-image: url("img/colorful.jpg");
+	--bg-image: url("img/colorful.webp");
 
 	--glass-bg: rgba(20, 20, 24, 0.35);
 	--glass-bg-strong: rgba(30, 30, 36, 0.55);
