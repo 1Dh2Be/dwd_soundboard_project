@@ -4,7 +4,7 @@ A minimalist sound explorer built on the [Freesound.org](https://freesound.org) 
  
 Built as a first-year project for the Dynamic Web Development course at [Odisee](https://www.odisee.be) — Applied Informatics, 2025–2026.
 
-![Soundboard UI](img/ui.png)
+![Soundboard UI](img/ui.webp)
  
 ## Features
  
